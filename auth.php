@@ -1,5 +1,0 @@
-<?php
-
-//Do authentication here.
-
-?>
