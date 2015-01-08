@@ -3,9 +3,10 @@
 function connectUser($user, $pass) {
 	startSession();
 
+	//hardcoded testing
 	if ($user == 'admin' && $pass == 'admin') {
-		$_SESSION['user'] = $_SERVER['PHP_AUTH_USER'];
-		$_SESSION['pass'] = $_SERVER['PHP_AUTH_PW'];
+		$_SESSION['user'] = $user;
+		$_SESSION['pass'] = $pass;
 		return true;
 	}
 
@@ -22,6 +23,7 @@ function isUserConnected() {
 	return (isset($_SESSION['user']) && isset($_SESSION['pass']));
 }
 
+//probably gonna add a utils file to handle these type of methods
 function startSession() {
 	if(!isset($_SESSION)) 
         session_start(); 
