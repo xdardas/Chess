@@ -6,7 +6,7 @@ class Database {
 	Database
  *-------------------------------------------------------------------------------*
 	Made by Dor Ben Moshe
-	Inspired By Oded Antar
+	Inspired By Oded Antar's code for Database
  *-------------------------------------------------------------------------------*
  static Database 			getInstance();
  		PDOStatement		query($sql, $values);
