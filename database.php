@@ -17,13 +17,13 @@ class Database {
 		int 				count();
 /*------------------------------------------------------------------------------*/
 
-	private static $dbname 	= 'chessdb',		//The name of the database to connect to.
+	private static $dbname 	= 'PRIVATE_INFO',		//The name of the database to connect to.
 
-				   $host   	= '84.108.238.169',	//The host IP of the database.
+				   $host   	= 'PRIVATE_INFO',	//The host IP of the database.
 
-				   $user	= 'root',			//The username used to access the database.
+				   $user	= 'PRIVATE_INFO',			//The username used to access the database.
 
-				   $pass	= '';				//The password used to access the database.
+				   $pass	= 'PRIVATE_INFO';				//The password used to access the database.
 
 	private static $_instance;					//The instance of the class, used to ensure a single class
 												//is used throughout the code.
