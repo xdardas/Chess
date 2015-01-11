@@ -23,11 +23,11 @@ class Authenticator {
 		}
 
 		self::startSession();
-		$_SESSION['username'] = $user;
 		$_SESSION['timestamp'] = time();
+
 		foreach ($dbresults as $row) {
-			foreach ($row as $key => $value)
-				$_SESSION[$key] = $value;
+			$row['username'] = $user;
+			$_SESSION['account'] = Account::fromArray($row);
 			break;
 		}
 
@@ -53,18 +53,14 @@ class Authenticator {
 	public static function disconnect() {
 		self::startSession();
 		unset(
-			$_SESSION['account_id'],
-			$_SESSION['username'],
-			$_SESSION['timestamp'],
-			$_SESSION['wins'],
-			$_SESSION['losses'],
-			$_SESSION['ties']
+			$_SESSION['account'],
+			$_SESSION['timestamp']
 		);
 	}
 
 	public static function isConnected() {
 		self::startSession();
-		if (isset($_SESSION['username'])) {
+		if (isset($_SESSION['account'])) {
 			if (time() - $_SESSION['timestamp'] > 15 /* minutes */ * 60 /* seconds */) {
 				self::disconnect();
 				return false;
@@ -84,13 +80,7 @@ class Authenticator {
 
 	public static function getAccount() {
 		if (self::isConnected()) {
-			return new Account(
-				$_SESSION['account_id'],
-				$_SESSION['username'],
-				$_SESSION['wins'],
-				$_SESSION['losses'],
-				$_SESSION['ties']
-			);
+			return $_SESSION['account'];
 		}
 		return null;
 	}

@@ -2,7 +2,11 @@
 
 	require '../authenticator.php';
 
-	Authenticator::disconnect();
-	header('Location: ../index.php');
+	if (Authenticator::isConnected()) {
+		Authenticator::disconnect();
+		echo 'true';
+	} else {
+		echo 'false';
+	}
 
 ?>

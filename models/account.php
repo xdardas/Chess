@@ -34,6 +34,26 @@ class Account {
 	public function ties() {
 		return $this->ties;
 	}
+
+	public function toArray() {
+		return array (
+			'account_id' 	=> $this->account_id(),
+			'username' 		=> $this->username 	(),
+			'wins' 			=> $this->wins 		(),
+			'losses' 		=> $this->losses 	(),
+			'ties' 			=> $this->ties 		(),
+		);
+	}
+
+	public static function fromArray($arr) {
+		return new Account(
+			$arr['account_id'	],
+			$arr['username'		],
+			$arr['wins'			],
+			$arr['losses'		],
+			$arr['ties'			]
+		);
+	}
 }
 
 ?>

@@ -6,10 +6,10 @@ class Database {
 	Database API
  *-------------------------------------------------------------------------------*
 	Made by Dor Ben Moshe
-	Inspired By Oded Antar
+	Inspired By Oded Antar's database code
  *-------------------------------------------------------------------------------*
  static Database 			getInstance();
- 		PDOStatement		query($sql, $values);
+ 		PDOStatement		query($qsl, $values);
 
 		void 				clear();
 		PDOStatement		results();
@@ -17,20 +17,20 @@ class Database {
 		int 				count();
 /*------------------------------------------------------------------------------*/
 
-	private static $dbname 	= 'chessdb',		//The name of the database to connect to.
+	private static $dbname 	= 'PRIVATE_INFO',		//The name of the database to connect to.
 
-				   $host   	= '84.108.238.169',	//The host IP of the database.
+				   $host   	= 'PRIVATE_INFO',		//The host IP of the database.
 
-				   $user	= 'root',			//The username used to access the database.
+				   $user	= 'PRIVATE_INFO',		//The username used to access the database.
 
-				   $pass	= '';				//The password used to access the database.
+				   $pass	= 'PRIVATE_INFO';		//The password used to access the database.
 
-	private static $_instance;					//The instance of the class, used to ensure a single class
-												//is used throughout the code.
+	private static $_instance;						//The instance of the class, used to ensure a single class
+													//is used throughout the code.
 
-		   private $_pdo,						//The PDO object used to access the database.
+		   private $_pdo,							//The PDO object used to access the database.
 
-		   		   $_results;					//The results of the last query are stored here.
+		   		   $_results;						//The results of the last query are stored here.
 
 	//The constructor of the class, private in this case, to ensure the use of getInstance.
 	private function __construct() {
